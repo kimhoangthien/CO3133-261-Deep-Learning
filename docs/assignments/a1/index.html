@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assignment 1 | CO3133</title><link rel="stylesheet" href="../../assets/css/style.css"></head>
+
+
+<body><a class="skip" href="#main">Skip to content</a>
+
+<header>
+<div class="wrap">
+<p class="eyebrow">HCMUT · VNU-HCM / Semester 261</p>
+
+<nav aria-label="Main navigation"><a href="../../index.html">Course home</a><a href="../a1/index.html" aria-current="page">Assignment 1</a><a href="../a2/index.html">Assignment 2</a><a href="../a3/index.html">Assignment 3</a></nav>
+</div>
+</header>
+
+<main id="main" class="wrap">
+<h1>Assignment 1: Image classification</h1>
+
+<p class="status">Foundation ready; experiments pending</p>
+
+<p>Instructor: Lê Thành Sách · <a href="../../index.html#team">Group members (pending)</a></p>
+
+<section>
+<h2>Problem statement</h2>
+
+<p>Compare image classification models on Fashion-MNIST: Linear / Softmax, MLP, CNN, LSTM or GRU, and Transformer.</p>
+</section>
+
+<section>
+<h2>Dataset description and EDA</h2>
+
+<p>Use the official Fashion-MNIST test set. Split the official training set into training and validation with a fixed seed. EDA will be added after analysis.</p>
+</section>
+
+<section>
+<h2>Methodology</h2>
+
+<p>The Linear classifier flattens each image and produces raw class logits. Other model families remain TODO.</p>
+</section>
+
+<section>
+<h2>Experimental setup</h2>
+
+<p>Default configuration: seed 42, 10% validation split, batch size 64, Adam, learning rate 0.001, 10 epochs. Normalize with fixed mean 0.5 and standard deviation 0.5. These are configuration defaults, not completed experiments.</p>
+</section>
+
+<section>
+<h2>Results</h2>
+
+<p>Results will be added after experiments are completed. Planned comparison: accuracy, macro-F1, parameters, training time, inference time and training/validation curves.</p>
+</section>
+
+<section>
+<h2>Comparison and discussion</h2>
+
+<p>Representation and inductive-bias analysis will follow the controlled experiments.</p>
+</section>
+
+<section>
+<h2>Error analysis</h2>
+
+<p>Confusion matrices and correct/incorrect prediction examples will be discussed after experiments.</p>
+</section>
+
+<section>
+<h2>Limitations and conclusion</h2>
+
+<p>To be added after the work is completed.</p>
+</section>
+
+<section>
+<h2>Source code</h2>
+
+<p><a href="https://github.com/kimhoangthien/CO3133-261-Deep-Learning">Course repository</a></p>
+</section>
+
+<section>
+<h2>Checkpoint reconstruction</h2>
+
+<p>Run <code>python -m src.train --config configs/a1/linear.yaml</code> from the repository root. The best validation checkpoint is written to <code>checkpoints/a1/linear/best.pt</code>. No final checkpoint is published yet.</p>
+</section>
+
+<section>
+<h2>Report / slides</h2>
+
+<p>To be added after the work is completed.</p>
+</section>
+
+<section>
+<h2>YouTube presentation</h2>
+
+<p>To be added after the work is completed.</p>
+</section>
+
+<section>
+<h2>AI Usage Disclosure</h2>
+
+<p>Codex assisted with the initial Linear pipeline and this page skeleton. Verification is documented in the repository; responsible team reviewer is pending.</p>
+</section>
+</main>
+
+<footer>
+<div class="wrap">CO3133 · Deep Learning and Its Applications · Semester 261</div>
+</footer>
+</body>
+</html>
