@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assignment 1 | CO3133</title><link rel="stylesheet" href="../../assets/css/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assignment 1 | CO3133</title><link rel="stylesheet" href="../../assets/css/style.css?v=4"></head>
 
 
 <body><a class="skip" href="#main">Skip to content</a>
@@ -9,25 +9,87 @@
 <div class="wrap">
 <p class="eyebrow">HCMUT · VNU-HCM / Semester 261</p>
 
-<nav aria-label="Main navigation"><a href="../../index.html">Course home</a><a href="../a1/index.html" aria-current="page">Assignment 1</a><a href="../a2/index.html">Assignment 2</a><a href="../a3/index.html">Assignment 3</a></nav>
+<nav aria-label="Main navigation"><a href="../../index.html">Overview</a><a href="../a1/index.html" aria-current="page">A1</a><a href="../a2/index.html">A2</a><a href="../a3/index.html">A3</a></nav>
 </div>
 </header>
 
 <main id="main" class="wrap">
-<h1>Assignment 1: Image classification</h1>
+<h1>Assignment 1: Foundations of Deep Learning Pipelines and Architectures</h1>
 
-<p class="status">Foundation ready; experiments pending</p>
+<p class="status">Pending</p>
 
-<p>Instructor: Lê Thành Sách · <a href="../../index.html#team">Group members (pending)</a></p>
+<p>Instructor: Lê Thành Sách · <a href="../../index.html#team">G-08</a></p>
 
 <section>
-<h2>Problem statement</h2>
+<h2>Overview</h2>
+<p>Build a reproducible PyTorch image-classification pipeline on Fashion-MNIST and compare architecture families ranging from linear and MLP baselines to CNN, recurrent models, and Transformers.</p>
+<p><strong>Weight:</strong> 40%</p>
+<h3>Milestones</h3>
+<ul class="milestones">
+<li><strong>M1 Draft</strong><br><time datetime="2026-09-23">23 Sep 2026</time> · 25% of Assignment 1</li>
+<li><strong>M2 Final</strong><br><time datetime="2026-10-21">21 Oct 2026</time> · 75% of Assignment 1</li>
+</ul>
+</section>
+
+<section id="contributions">
+<h2 id="contributions-heading">Group Members &amp; Contributions</h2>
+
+<div class="table-wrap" role="region" aria-labelledby="contributions-heading" tabindex="0">
+<table aria-labelledby="contributions-heading">
+<thead>
+<tr>
+<th scope="col">Member</th>
+<th scope="col">Student ID</th>
+<th scope="col">Main Role</th>
+<th scope="col">M1 Draft Responsibilities</th>
+<th scope="col">M2 Final Responsibilities</th>
+<th scope="col">Report / Website / Presentation</th>
+<th scope="col">Verification / Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Hoàng Thiên Kim</th>
+<td>2352660</td>
+<td>To be updated</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+</tr>
+<tr>
+<th scope="row">Phạm Hồ Minh Khoa</th>
+<td>2352585</td>
+<td>To be updated</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+</tr>
+<tr>
+<th scope="row">Antoine Ansou Wu</th>
+<td>22660057</td>
+<td>To be updated</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+<td>To be assigned</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>Responsibilities will be updated as implementation and experiments progress.</p>
+</section>
+
+<section>
+<h2>Problem Statement</h2>
 
 <p>Compare image classification models on Fashion-MNIST: Linear / Softmax, MLP, CNN, LSTM or GRU, and Transformer.</p>
 </section>
 
 <section>
-<h2>Dataset description and EDA</h2>
+<h2>Dataset Description and EDA</h2>
 
 <p>Use the official Fashion-MNIST test set. Split the official training set into training and validation with a fixed seed. EDA will be added after analysis.</p>
 </section>
@@ -39,7 +101,7 @@
 </section>
 
 <section>
-<h2>Experimental setup</h2>
+<h2>Experimental Setup</h2>
 
 <p>Default configuration: seed 42, 10% validation split, batch size 64, Adam, learning rate 0.001, 10 epochs. Normalize with fixed mean 0.5 and standard deviation 0.5. These are configuration defaults, not completed experiments.</p>
 </section>
@@ -51,43 +113,43 @@
 </section>
 
 <section>
-<h2>Comparison and discussion</h2>
+<h2>Comparison and Discussion</h2>
 
 <p>Representation and inductive-bias analysis will follow the controlled experiments.</p>
 </section>
 
 <section>
-<h2>Error analysis</h2>
+<h2>Error Analysis</h2>
 
 <p>Confusion matrices and correct/incorrect prediction examples will be discussed after experiments.</p>
 </section>
 
 <section>
-<h2>Limitations and conclusion</h2>
+<h2>Limitations and Conclusion</h2>
 
 <p>To be added after the work is completed.</p>
 </section>
 
 <section>
-<h2>Source code</h2>
+<h2>Source Code</h2>
 
-<p><a href="https://github.com/kimhoangthien/CO3133-261-Deep-Learning">Course repository</a></p>
+<p><a href="https://github.com/kimhoangthien/CO3133-261-Deep-Learning">Group Repository</a></p>
 </section>
 
 <section>
-<h2>Checkpoint reconstruction</h2>
+<h2>Checkpoint Reconstruction</h2>
 
 <p>Run <code>python -m src.train --config configs/a1/linear.yaml</code> from the repository root. The best validation checkpoint is written to <code>checkpoints/a1/linear/best.pt</code>. No final checkpoint is published yet.</p>
 </section>
 
 <section>
-<h2>Report / slides</h2>
+<h2>Report / Slides</h2>
 
 <p>To be added after the work is completed.</p>
 </section>
 
 <section>
-<h2>YouTube presentation</h2>
+<h2>YouTube Presentation</h2>
 
 <p>To be added after the work is completed.</p>
 </section>
@@ -96,6 +158,7 @@
 <h2>AI Usage Disclosure</h2>
 
 <p>Codex assisted with the initial Linear pipeline and this page skeleton. Verification is documented in the repository; responsible team reviewer is pending.</p>
+<p><a href="https://github.com/kimhoangthien/CO3133-261-Deep-Learning/blob/main/AI_USAGE.md">View details →</a></p>
 </section>
 </main>
 
