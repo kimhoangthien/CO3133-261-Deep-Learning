@@ -1,4 +1,4 @@
-# Verification - 2026-09-15
+ # Verification - 2026-09-15
 
 ## Initial inspection
 

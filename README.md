@@ -5,7 +5,7 @@ Faculty of Computer Science and Engineering
 Semester **261** · Instructor **Lê Thành Sách**
 
 One repository grows from **shared foundation → A1 → A2 → A3**.
-Group name, student names/IDs, contributions and GitHub profiles are pending.
+Group G-08; confirmed team ownership is in [Assignment 1 tasks](assignments/a1/TASKS.md).
 Repository: https://github.com/kimhoangthien/CO3133-261-Deep-Learning
 
 ## Architecture and current status
@@ -114,7 +114,7 @@ appropriate task behavior. Structured dictionaries and modality-specific outputs
 belong to that task; shared seed/device/config/log/checkpoint utilities remain
 unchanged. No multimodal functionality is claimed at this stage.
 
-## Git workflow
+## Assignment 1 collaboration and Git workflow
 
 - `main`: latest verified stable version of the whole course project; the tested
   initial foundation should ultimately be reviewed and incorporated here.
@@ -122,12 +122,28 @@ unchanged. No multimodal functionality is claimed at this stage.
   work flows from `dev` into `main` at each milestone.
 - `a1`, `a2`, `a3`: create only when each assignment is finalized, as snapshots;
   they are not daily development branches.
-- Optional submission tags: `a1-draft`, `a1-final`, `a2-proposal`, `a2-draft`,
+- Submission tags: `a1-draft`, `a1-final`; later milestones: `a2-proposal`, `a2-draft`,
   `a2-final`, `a3-proposal`, `a3-draft`, `a3-final`.
-- Temporary feature branches are optional for larger/parallel changes.
+- M1 branches from latest `dev`: `feature/a1-data-linear` (Hoàng Thiên Kim,
+  2352660), `feature/a1-training-mlp` (Phạm Hồ Minh Khoa, 2352585), and
+  `feature/a1-evaluation` (Antoine Ansou Wu, 22660057).
+- Feature branch → test/review → merge into `dev` → delete merged feature branch.
+- Milestone: `dev` → final QA → `main` → submission tag. M1 uses `a1-draft`;
+  at A1 Final only, create frozen branch `a1` and immutable tag `a1-final`.
 
-Initialization preserves the existing `dev` branch. No branch creation, commit,
-merge, push or repository-settings change is performed by this task.
+M1 Draft is due **23 September 2026, 23:59 GMT+7** (25%); M2 Final is due
+**21 October 2026, 23:59 GMT+7** (75%). Confirm interfaces on 17–18 Sep,
+develop foundations on 18–20 Sep, integrate on 21 Sep, verify/document on
+21–22 Sep, and prepare submission on 23 Sep. M1 requires EDA, data loaders,
+training/validation, Linear and MLP; CNN is optional, recurrent/Transformer work
+is Final-only. See [TASKS.md](assignments/a1/TASKS.md) for file ownership,
+interfaces, dependencies and the counterpart to external `CO3133_A1_Timeline.xlsx`.
+
+Coordinate shared entry points, model/task registries, README, AI log and A1 page
+at integration. Keep one common trainer/evaluator and comparison protocol.
+After M1 Draft, create `feature/a1-rnn` (Kim), `feature/a1-cnn` (Khoa), and
+`feature/a1-transformer` (Antoine) from `dev`; do not create them or assignment
+snapshot branches during this setup.
 
 ## GitHub Pages
 
