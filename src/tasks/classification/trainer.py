@@ -25,6 +25,7 @@ def train_one_epoch(model, loader, optimizer, criterion, device):
 
 
 def fit(model, bundle, config, device, logger):
+    """Train with shared loaders; save the first checkpoint with maximal val accuracy."""
     settings = config["training"]
     epochs = settings["epochs"]
     if not isinstance(epochs, int) or epochs < 1:

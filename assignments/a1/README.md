@@ -7,7 +7,8 @@ protocol identical for the main comparison.
 
 ## Remaining work
 
-- EDA in `notebooks/eda.ipynb` (create when analysis begins).
+- Run `notebooks/eda.ipynb` and record the generated split, class-balance, and
+  representative-sample findings in its final section.
 - Implement the four remaining model families and tune using validation data only.
 - Full experiments: accuracy, macro-F1, parameters, training/inference timing.
 - Plot saved training/validation history and confusion matrices outside training.
