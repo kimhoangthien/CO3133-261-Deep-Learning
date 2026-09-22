@@ -8,7 +8,7 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
-/data/
-/checkpoints/
-/logs/
-/results/
+data/
+checkpoints/
+logs/
+results/
