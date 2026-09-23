@@ -57,3 +57,37 @@ QA was not performed. Responsive CSS and static links were checked in source.
 No full experiments, GPU/MPS runs, multi-worker runs, remote publication or
 student/reviewer approvals were performed. Fill real group identity, contributions,
 report/slides and YouTube links, and review AI_USAGE.md before submission.
+
+
+## Status evidence addendum - 2026-09-23
+
+This addendum summarizes existing local evidence inspected during the landing-page
+and AI-disclosure refresh. The original 15 September checks above remain historical.
+No training or Python test suite was rerun for this documentation-only update.
+
+- Implementation inspected at `5445324`: Linear and MLP, shared training/evaluation,
+  dataset preprocessing and metadata, and guards against nonfinite values.
+- Local source: `results/a1/integration-review/integration-report.md` records
+  **34 passed**, real Fashion-MNIST smoke checks for both models, and execution
+  of all 11 EDA code cells without errors. Its descriptions of uncommitted guard
+  changes refer to review time; those changes are now in commit `5445324`.
+- Both `results/a1/linear/evaluation.json` and `results/a1/mlp/evaluation.json`
+  record full CPU evaluation on 10,000 test images, seed 42, 54,000/6,000 training
+  and validation sizes, no sample limit, identical preprocessing and split hash,
+  ten configured training epochs and selected checkpoint epoch 10.
+
+| Model | Test accuracy | Macro-F1 | Parameters |
+| --- | ---: | ---: | ---: |
+| Linear | 84.06% | 0.83934 | 7,850 |
+| MLP | 87.59% | 0.87549 | 101,770 |
+
+These are single-seed baseline results. Checkpoints, result JSON files, the review
+report and executed EDA copy are local ignored artifacts, not published evidence.
+The team must include them through the submission channel and complete review.
+The initial MLP run's NaN losses/nonfinite checkpoint remain unexplained according
+to the review; guards and successful subsequent runs do not resolve that cause.
+The review therefore does not establish M1 submission readiness.
+
+Documentation checks: baseline values and protocol checked against local JSON;
+local HTML navigation/stylesheets/fragments checked for valid targets;
+`git diff --check` passed. Browser visual QA was not performed for this text update.

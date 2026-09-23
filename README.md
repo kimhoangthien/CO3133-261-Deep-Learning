@@ -18,11 +18,14 @@ Repository: https://github.com/kimhoangthien/CO3133-261-Deep-Learning
 - `assignments`: notes, notebooks and analysis; reusable code stays in `src`.
 - `docs`: plain HTML/CSS GitHub Pages website; no build step or JavaScript needed.
 
-**Implemented:** Linear raw-logit classifier, Adam/CrossEntropy training, validation,
+**Implemented:** Linear and MLP raw-logit classifiers, Adam/CrossEntropy training, validation,
 best-accuracy checkpoint, official-test evaluation, accuracy, macro-F1 (all ten
 classes, zero for undefined class F1), parameter count, confusion-matrix data,
-training history and timing. No full assignment comparison has been completed.
-MLP/CNN/LSTM-or-GRU/Transformer configs are explicit TODOs and fail clearly.
+training history and timing. Full-data Linear and MLP CPU runs are recorded: test accuracy 84.06% and 87.59%,
+respectively. EDA was executed in a local review copy. The 23 September review
+records 34 passing tests and smoke checks for both models, but an earlier MLP
+NaN failure remains unexplained; submission review is still open.
+CNN/LSTM-or-GRU/Transformer configs remain explicit TODOs and fail clearly.
 A2/A3 are placeholders, with no speculative implementations.
 
 See [PROJECT_TREE.md](PROJECT_TREE.md) for the complete source tree and
@@ -74,7 +77,7 @@ python -m src.evaluate --config configs/a1/linear.yaml --checkpoint checkpoints/
 ```
 
 The smoke test downloads real Fashion-MNIST, then uses 128 samples per split for
-one CPU epoch. It removes its temporary output files. First-run download time
+one CPU epoch for each of Linear and MLP. It removes its temporary output files. First-run download time
 is additional; unit tests use a mocked torchvision dataset and need no network.
 Smoke metrics are not meaningful performance results.
 
@@ -95,9 +98,9 @@ measurements for the final compute-cost comparison.
 
 ## Remaining Assignment 1 work
 
-Implement MLP, CNN, LSTM/GRU and Transformer; add EDA under
-`assignments/a1/notebooks/eda.ipynb` when analysis begins; run controlled full-data
-experiments; plot training/validation curves and confusion matrices; collect
+Investigate the initial MLP nonfinite run; implement CNN, LSTM/GRU and Transformer;
+incorporate executed EDA findings into `assignments/a1/notebooks/eda.ipynb`;
+extend controlled full-data experiments beyond the two baselines; plot training/validation curves and confusion matrices; collect
 correct/incorrect examples; analyze representation, inductive bias and limitations;
 finish the report/slides, presentation, website and team-reviewed AI records.
 
@@ -148,17 +151,16 @@ snapshot branches during this setup.
 ## GitHub Pages
 
 `docs/index.html` is the landing page; `docs/assignments/a1/index.html` is the A1
-report skeleton; A2/A3 pages clearly say not started. All use shared
+progress and baseline-results page; A2/A3 pages clearly say not started. All use shared
 `docs/assets/css/style.css` and relative navigation suitable for repository subpaths.
 
 After the foundation is reviewed and committed on `main`, configure GitHub:
 **Settings → Pages → Deploy from a branch → Branch: main → Folder: /docs → Save**.
 No remote settings have been changed. Fill team information, reports, presentation
-links and real results before submission. Source links currently refer to the
-known repository; the AI-log link uses `dev`, the branch used during initialization.
+links and real results before submission. Source links refer to the known repository; the AI-log link targets `main`.
 
 ## AI disclosure
 
-[AI_USAGE.md](AI_USAGE.md) contains a template and this initialization's factual
-record. Complete student identity, responsible reviewer and verification references.
+[AI_USAGE.md](AI_USAGE.md) contains a template, the initialization record, and evidence-based
+updates through 23 September 2026. Complete student identity, responsible reviewer and verification references.
 The website also includes shared and assignment-specific AI disclosure sections.
