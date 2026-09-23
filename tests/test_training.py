@@ -126,3 +126,34 @@ def test_linear_and_mlp_share_comparison_settings():
     linear, mlp = (load_config(f"configs/a1/{name}.yaml") for name in ("linear", "mlp"))
     for key in ("assignment", "task", "seed", "device", "dataset", "training"):
         assert linear[key] == mlp[key]
+
+
+def test_nonfinite_training_does_not_save_checkpoint(config, fake_fashion):
+    bundle = build_dataset(config)
+    model = build_model(config, bundle["metadata"])
+    with torch.no_grad():
+        next(model.parameters()).fill_(float("nan"))
+    with pytest.raises(FloatingPointError, match="training loss"):
+        fit(model, bundle, config, "cpu", logging.getLogger(__name__))
+    assert not list(Path(config["checkpoint"]["root"]).rglob("*.pt"))
+    assert not list(Path(config["results"]["root"]).rglob("training.json"))
+
+
+def test_nonfinite_gradient_aborts_optimizer_update():
+    model = torch.nn.Linear(2, 2)
+    before = {key: value.clone() for key, value in model.state_dict().items()}
+    hook = model.weight.register_hook(lambda gradient: torch.full_like(gradient, float("nan")))
+    loader = DataLoader(TensorDataset(torch.ones(2, 2), torch.zeros(2, dtype=torch.long)))
+    with pytest.raises(FloatingPointError, match="training gradient"):
+        train_one_epoch(model, loader, torch.optim.SGD(model.parameters(), lr=0.1),
+                        torch.nn.CrossEntropyLoss(), "cpu")
+    hook.remove()
+    assert all(torch.equal(before[key], value) for key, value in model.state_dict().items())
+
+
+def test_nonfinite_optimizer_result_is_rejected():
+    model = torch.nn.Linear(2, 2)
+    loader = DataLoader(TensorDataset(torch.ones(2, 2), torch.zeros(2, dtype=torch.long)))
+    with pytest.raises(FloatingPointError, match="parameter after optimizer"):
+        train_one_epoch(model, loader, torch.optim.SGD(model.parameters(), lr=float("inf")),
+                        torch.nn.CrossEntropyLoss(), "cpu")

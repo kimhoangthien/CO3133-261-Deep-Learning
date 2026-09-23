@@ -43,3 +43,17 @@ def test_empty_evaluation_is_rejected():
     loader = DataLoader(TensorDataset(torch.empty(0, 2), torch.empty(0, dtype=torch.long)))
     with pytest.raises(ValueError, match="empty loader"):
         evaluate(torch.nn.Identity(), loader, "cpu", 2)
+
+
+@pytest.mark.parametrize("value", [float("nan"), float("inf")])
+def test_nonfinite_logits_are_rejected_without_loss(value):
+    loader = DataLoader(TensorDataset(torch.full((2, 2), value), torch.zeros(2, dtype=torch.long)))
+    with pytest.raises(FloatingPointError, match="evaluation logits"):
+        evaluate(torch.nn.Identity(), loader, "cpu", 2)
+
+
+def test_nonfinite_evaluation_loss_is_rejected():
+    loader = DataLoader(TensorDataset(torch.ones(2, 2), torch.zeros(2, dtype=torch.long)))
+    with pytest.raises(FloatingPointError, match="evaluation loss"):
+        evaluate(torch.nn.Identity(), loader, "cpu", 2,
+                 lambda logits, labels: logits.sum() * float("nan"))

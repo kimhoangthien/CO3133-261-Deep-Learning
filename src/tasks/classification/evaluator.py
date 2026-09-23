@@ -23,8 +23,13 @@ def evaluate(model, loader, device, num_classes, criterion=None, *, collect_pred
         logits = model(inputs)
         synchronize(device)
         elapsed += perf_counter() - start
+        if not torch.isfinite(logits).all():
+            raise FloatingPointError("Nonfinite evaluation logits; metrics aborted")
         if criterion is not None:
-            total_loss += criterion(logits, labels).item() * labels.size(0)
+            loss = criterion(logits, labels)
+            if not torch.isfinite(loss):
+                raise FloatingPointError("Nonfinite evaluation loss; metrics aborted")
+            total_loss += loss.item() * labels.size(0)
         targets.append(labels.cpu())
         predictions.append(logits.argmax(1).cpu())
         count += labels.size(0)

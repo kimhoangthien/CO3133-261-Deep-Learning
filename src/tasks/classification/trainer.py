@@ -14,8 +14,15 @@ def train_one_epoch(model, loader, optimizer, criterion, device):
         optimizer.zero_grad(set_to_none=True)
         logits = model(inputs)
         loss = criterion(logits, labels)
+        if not torch.isfinite(loss):
+            raise FloatingPointError("Nonfinite training loss; optimizer update aborted")
         loss.backward()
+        if any(parameter.grad is not None and not torch.isfinite(parameter.grad).all()
+               for parameter in model.parameters()):
+            raise FloatingPointError("Nonfinite training gradient; optimizer update aborted")
         optimizer.step()
+        if any(not torch.isfinite(parameter).all() for parameter in model.parameters()):
+            raise FloatingPointError("Nonfinite model parameter after optimizer update")
         count += labels.size(0)
         loss_sum += loss.item() * labels.size(0)
         correct += (logits.argmax(1) == labels).sum().item()
