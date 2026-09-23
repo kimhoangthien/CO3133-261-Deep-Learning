@@ -16,6 +16,7 @@ def test_model_contract(config, name):
     before = [parameter.detach().clone() for parameter in model.parameters()]
     output = model(inputs)
     assert output.shape == (4, METADATA["num_classes"])
+    assert torch.isfinite(output).all()
     # Raw logits: a model applying softmax itself would make every row sum to one.
     assert not torch.allclose(output.sum(1), torch.ones(4))
     loss = torch.nn.CrossEntropyLoss()(output, torch.tensor([0, 1, 2, 3]))

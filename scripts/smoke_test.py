@@ -1,5 +1,6 @@
 """Real Fashion-MNIST integration check. First run downloads the dataset."""
 import sys
+import math
 from pathlib import Path
 from tempfile import TemporaryDirectory
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -23,6 +24,7 @@ def check(name, directory):
     metrics = evaluated["metrics"]
     assert metrics["num_samples"] == 128
     assert 0 <= metrics["accuracy"] <= 1 and 0 <= metrics["macro_f1"] <= 1
+    assert math.isfinite(metrics["loss"])
     assert Path(trained["checkpoint"]).exists()
     return {"model": config["model"]["name"], "parameters": metrics["num_parameters"],
             "split": evaluated["dataset"]["split_sha256"]}

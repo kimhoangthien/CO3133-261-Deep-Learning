@@ -17,11 +17,13 @@ def test_loaders_and_split(config, fake_fashion):
     train, val, test = [a["loaders"][key] for key in ("train", "val", "test")]
     assert [len(x.dataset) for x in (train,val,test)] == [90,10,20]
     assert val.dataset.indices == b["loaders"]["val"].dataset.indices
+    assert train.dataset.indices == b["loaders"]["train"].dataset.indices
     assert set(train.dataset.indices).isdisjoint(val.dataset.indices)
     assert len(set(train.dataset.indices + val.dataset.indices)) == 100
     assert train.dataset.dataset.train and not test.dataset.train
     images, labels = next(iter(train))
     assert images.shape == (8,1,28,28) and labels.dtype == torch.int64
+    assert labels.shape == (images.size(0),)
     assert a["metadata"]["num_classes"] == 10
     assert isinstance(train.sampler, RandomSampler)
     assert isinstance(val.sampler, SequentialSampler)
