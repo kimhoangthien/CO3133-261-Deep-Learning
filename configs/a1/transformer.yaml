@@ -1,4 +1,4 @@
-# TODO: model is not implemented; this config intentionally fails clearly.
+# NOTE(A1): Preparation config; transformer remains unregistered until implementation and integration.
 assignment: a1
 task: classification
 experiment_name: transformer
@@ -7,12 +7,15 @@ device: auto
 dataset:
   name: fashion_mnist
   root: data
+  download: true
   batch_size: 64
   num_workers: 0
   val_ratio: 0.1
   normalization: true
 model:
   name: transformer
+  # TODO(A1-M2, Antoine): Add model.parameters consumed by explicit constructor/factory arguments for token strategy, d_model, nhead, encoder layers, feedforward dimension and dropout.
+  # TODO(A1-M2, Antoine): Justify token/sequence dimensions and attention settings; retain the common protocol and document any agreed training deviations.
 training:
   epochs: 10
   learning_rate: 0.001

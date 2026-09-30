@@ -24,8 +24,10 @@ classes, zero for undefined class F1), parameter count, confusion-matrix data,
 training history and timing. Full-data Linear and MLP CPU runs are recorded: test accuracy 84.06% and 87.59%,
 respectively. EDA was executed in a local review copy. The 23 September review
 records 34 passing tests and smoke checks for both models, but an earlier MLP
-NaN failure remains unexplained; submission review is still open.
-CNN/LSTM-or-GRU/Transformer configs remain explicit TODOs and fail clearly.
+NaN failure remains unexplained in that historical record. M1 Draft is now completed
+and merged, as confirmed on 30 September; M2 Final development is in progress.
+CNN/LSTM-or-GRU/Transformer have interface-only skeletons and assigned config TODOs;
+they remain unregistered. Start with the [M2 guide](assignments/a1/START_HERE.md).
 A2/A3 are placeholders, with no speculative implementations.
 
 See [PROJECT_TREE.md](PROJECT_TREE.md) for the complete source tree and
@@ -127,26 +129,25 @@ unchanged. No multimodal functionality is claimed at this stage.
   they are not daily development branches.
 - Submission tags: `a1-draft`, `a1-final`; later milestones: `a2-proposal`, `a2-draft`,
   `a2-final`, `a3-proposal`, `a3-draft`, `a3-final`.
-- M1 branches from latest `dev`: `feature/a1-data-linear` (Hoàng Thiên Kim,
-  2352660), `feature/a1-training-mlp` (Phạm Hồ Minh Khoa, 2352585), and
-  `feature/a1-evaluation` (Antoine Ansou Wu, 22660057).
-- Feature branch → test/review → merge into `dev` → delete merged feature branch.
+- Existing M2 branches: `feature/a1-rnn` (Hoàng Thiên Kim, 2352660),
+  `feature/a1-cnn` (Phạm Hồ Minh Khoa, 2352585), and
+  `feature/a1-transformer` (Antoine Ansou Wu, 2660057). `dev` is the development
+  source of truth; synchronize it into these branches with safe merges.
+- Feature branch → test/review → merge into `dev`. Retain the M2 branches for
+  their owners' later analysis work; delete them only after their full scope is merged.
 - Milestone: `dev` → final QA → `main` → submission tag. M1 uses `a1-draft`;
   at A1 Final only, create frozen branch `a1` and immutable tag `a1-final`.
 
-M1 Draft is due **23 September 2026, 23:59 GMT+7** (25%); M2 Final is due
-**21 October 2026, 23:59 GMT+7** (75%). Confirm interfaces on 17–18 Sep,
-develop foundations on 18–20 Sep, integrate on 21 Sep, verify/document on
-21–22 Sep, and prepare submission on 23 Sep. M1 requires EDA, data loaders,
-training/validation, Linear and MLP; CNN is optional, recurrent/Transformer work
-is Final-only. See [TASKS.md](assignments/a1/TASKS.md) for file ownership,
-interfaces, dependencies and the counterpart to external `CO3133_A1_Timeline.xlsx`.
+M1 Draft (23 September 2026, 25%) is completed and merged. M2 Final is due
+**21 October 2026, 23:59 GMT+7** (75%) and requires all five models: Linear,
+MLP, CNN, one LSTM or GRU, and Transformer. See
+[TASKS.md](assignments/a1/TASKS.md) for M1 records, M2 ownership, dependencies,
+Definition of Done, report allocation and the common experiment contract.
 
 Coordinate shared entry points, model/task registries, README, AI log and A1 page
 at integration. Keep one common trainer/evaluator and comparison protocol.
-After M1 Draft, create `feature/a1-rnn` (Kim), `feature/a1-cnn` (Khoa), and
-`feature/a1-transformer` (Antoine) from `dev`; do not create them or assignment
-snapshot branches during this setup.
+Use the existing M2 branches; do not recreate them. Members implement their own
+TODOs and coordinate shared integration. Final snapshot/tag creation waits for M2 QA.
 
 ## GitHub Pages
 
@@ -162,5 +163,5 @@ links and real results before submission. Source links refer to the known reposi
 ## AI disclosure
 
 [AI_USAGE.md](AI_USAGE.md) contains a template, the initialization record, and evidence-based
-updates through 23 September 2026. Complete student identity, responsible reviewer and verification references.
+updates through 30 September 2026. Complete student identity, responsible reviewer and verification references.
 The website also includes shared and assignment-specific AI disclosure sections.

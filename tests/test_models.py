@@ -6,6 +6,11 @@ from src.models.registry import MODELS, build_model
 A1_MODELS = sorted(name for assignment, name in MODELS if assignment == "a1")
 METADATA = {"input_shape": [1, 28, 28], "num_classes": 10}
 
+# TODO(A1-M2, Khoa): Add CNN forward tests for [B, 10], finite raw logits and CrossEntropyLoss/backward, plus configurable class count and invalid arguments.
+# TODO(A1-M2, Kim): Test row-sequence conversion and RNN forward [B, 10], finite raw logits, CrossEntropyLoss/backward and invalid recurrent arguments.
+# TODO(A1-M2, Antoine): Test token/projection/attention shapes and Transformer forward [B, 10], finite raw logits, CrossEntropyLoss/backward and invalid dimensions.
+# TODO(A1-M2-INTEGRATION): Once all models are ready, extend registry-driven coverage using valid agreed parameters for each model; retain Linear/MLP coverage.
+
 
 @pytest.mark.parametrize("name", A1_MODELS)
 def test_model_contract(config, name):

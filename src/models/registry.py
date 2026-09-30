@@ -14,6 +14,7 @@ def build_mlp(config, metadata):
     )
 
 
+# TODO(A1-M2-INTEGRATION): After owner implementations/tests are reviewed, add cnn/rnn/transformer factories and registrations that consume every agreed model.parameters key.
 MODELS = {
     ("a1", "linear"): build_linear,
     ("a1", "mlp"): build_mlp,
@@ -23,5 +24,5 @@ MODELS = {
 def build_model(config, metadata):
     key = (config["assignment"], config["model"]["name"])
     if key not in MODELS:
-        raise NotImplementedError(f"Model {key} is not implemented. A1 MLP/CNN/RNN/Transformer are TODO.")
+        raise NotImplementedError(f"Model {key} is not implemented. A1 CNN/RNN/Transformer are TODO.")
     return MODELS[key](config, metadata)

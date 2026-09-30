@@ -3,7 +3,7 @@
 Maintain one record for each meaningful use. Do not submit unreviewed generated claims.
 Student identity and approval fields must be completed by the team.
 
-Last updated: **2026-09-23**. Historical attribution below is limited to the
+Last updated: **2026-09-30**. Historical attribution below is limited to the
 existing disclosure, commit trailers, and this session. A commit author is not
 a confirmed AI operator or reviewer. Missing prompts and approvals remain pending.
 
@@ -89,3 +89,35 @@ being attributed to AI solely because they appear in Git history or local files.
 - Limits: generated experiment artifacts are ignored by Git. Results summarized
   on the site do not publish checkpoints or the executed notebook. No submission,
   deployment, team approval or resolution of the earlier MLP failure is claimed.
+
+## M2 development preparation (2026-09-30)
+
+- Tool/model: Codex (GPT-6).
+- Team member: requesting user; identity not confirmed in this session.
+- Development stage/time: after completed/merged M1, before M2 model implementation.
+- Purpose: audit the M1 base, assign M2 ownership, prepare interface/config/test
+  TODOs, document the final protocol and prepare synchronization from `dev` into
+  the three existing feature branches.
+- Representative prompt: user-provided 23-section M2 preparation request specifying
+  "prepare, assign, document, synchronize" and prohibiting model implementations.
+- Affected files: `assignments/a1/TASKS.md`, `START_HERE.md`, assignment/root README,
+  `src/models/a1/{cnn,rnn,transformer}.py`, their configs, model registry,
+  `tests/test_models.py`, `tests/test_training.py`, and this log.
+- How AI output was verified: `python -m compileall src` passed;
+  `.venv\Scripts\python.exe -m pytest --tb=short` passed **34 tests in 4.93s**
+  after allowing access to pytest's temporary directory. Initial bare `pytest`
+  used a system environment lacking torch; the first project-environment run
+  encountered sandbox temp-directory permissions (14 passed, 20 setup errors).
+  No tests or M1 logic were changed to bypass those environment issues.
+- Additional checks: compared all common config fields across five models;
+  imported the three skeleton modules and confirmed they remain unregistered;
+  checked all 17 unique task records contain owner, branch, status, dependencies,
+  expected output and Definition of Done. Actionable TODO counts in source/config/tests:
+  Kim 9, Khoa 9, Antoine 10, shared integration 4. Documentation examples are excluded.
+- Responsible reviewer: pending team review.
+- Verification source: preparation commit and the command results from this session.
+- Limits: no CNN/RNN/Transformer logic, full experiments, new metrics, final
+  conclusions, final report/video or error-analysis notebook were produced.
+  M1 completion is supplied by the user; historical MLP-failure provenance remains
+  tracked for reproducibility review. The dated M1 website/verification records
+  are preserved; final webpage updates are assigned in A1-M2-014.

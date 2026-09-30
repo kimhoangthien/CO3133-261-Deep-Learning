@@ -1,4 +1,4 @@
-# TODO: model is not implemented; this config intentionally fails clearly.
+# NOTE(A1): Preparation config; rnn remains unregistered until implementation and integration.
 assignment: a1
 task: classification
 experiment_name: rnn
@@ -7,12 +7,15 @@ device: auto
 dataset:
   name: fashion_mnist
   root: data
+  download: true
   batch_size: 64
   num_workers: 0
   val_ratio: 0.1
   normalization: true
 model:
   name: rnn
+  # TODO(A1-M2, Kim): Add model.parameters consumed by explicit constructor/factory arguments: LSTM OR GRU, input size, hidden size, layers and optional dropout.
+  # TODO(A1-M2, Kim): Document chosen recurrent values and row-sequence semantics; retain the common protocol and record the final reproducibility environment/commands.
 training:
   epochs: 10
   learning_rate: 0.001

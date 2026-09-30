@@ -1,4 +1,4 @@
-# TODO: model is not implemented; this config intentionally fails clearly.
+# NOTE(A1): Preparation config; cnn remains unregistered until implementation and integration.
 assignment: a1
 task: classification
 experiment_name: cnn
@@ -7,12 +7,15 @@ device: auto
 dataset:
   name: fashion_mnist
   root: data
+  download: true
   batch_size: 64
   num_workers: 0
   val_ratio: 0.1
   normalization: true
 model:
   name: cnn
+  # TODO(A1-M2, Khoa): Add model.parameters consumed by explicit constructor/factory arguments for channel configuration, classifier dimensions and dropout only if used.
+  # TODO(A1-M2, Khoa): Document architecture choices and any agreed training deviations; preserve comparable saved histories for training-behavior analysis.
 training:
   epochs: 10
   learning_rate: 0.001

@@ -15,6 +15,9 @@ from src.tasks.classification.trainer import fit, train_one_epoch
 from src.tasks.classification.evaluator import validate
 from torch.utils.data import DataLoader, TensorDataset
 
+# TODO(A1-M2-INTEGRATION): After registering all five models, extend generic trainer/checkpoint tests with their real configs and independently verified parameter counts.
+# TODO(A1-M2-INTEGRATION): Extend generic evaluator coverage to all five models, checking checkpoint reload, finite metrics and identical split metadata without architecture-specific loops.
+
 
 @pytest.mark.parametrize("model_name,parameters", [("linear", 7850), ("mlp", 101770)])
 def test_pipeline_and_checkpoint(config, fake_fashion, model_name, parameters):
