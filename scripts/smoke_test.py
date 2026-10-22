@@ -9,7 +9,7 @@ from src.train import run as train
 from src.evaluate import run as evaluate
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIGS = ("configs/a1/linear.yaml", "configs/a1/mlp.yaml")
+CONFIGS = ("configs/a1/linear.yaml", "configs/a1/mlp.yaml", "configs/a1/transformer.yaml")
 
 
 def check(name, directory):
