@@ -1,4 +1,3 @@
-# NOTE(A1): Preparation config; transformer remains unregistered until implementation and integration.
 assignment: a1
 task: classification
 experiment_name: transformer
@@ -14,8 +13,18 @@ dataset:
   normalization: true
 model:
   name: transformer
-  # TODO(A1-M2, Antoine): Add model.parameters consumed by explicit constructor/factory arguments for token strategy, d_model, nhead, encoder layers, feedforward dimension and dropout.
-  # TODO(A1-M2, Antoine): Justify token/sequence dimensions and attention settings; retain the common protocol and document any agreed training deviations.
+  parameters:
+    # Rows give 28 tokens of 28 pixels, the representation the recurrent
+    # model also uses, so the two differ only by inductive bias.
+    tokens: rows
+    patch_size: 7          # only read when tokens is 'patches': 16 tokens of 49 pixels
+    d_model: 64
+    nhead: 4               # 16 dimensions per head
+    num_layers: 2
+    dim_feedforward: 128
+    dropout: 0.1
+    positional: sinusoidal # 'learned' costs (tokens + 1) * d_model parameters
+    pooling: cls           # 'mean' averages the encoded tokens instead
 training:
   epochs: 10
   learning_rate: 0.001
