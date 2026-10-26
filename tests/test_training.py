@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader, TensorDataset
 # TODO(A1-M2-INTEGRATION): Extend generic evaluator coverage to all five models, checking checkpoint reload, finite metrics and identical split metadata without architecture-specific loops.
 
 
-@pytest.mark.parametrize("model_name,parameters", [("linear", 7850), ("mlp", 101770)])
+@pytest.mark.parametrize("model_name,parameters", [("linear", 7850), ("mlp", 235146)])
 def test_pipeline_and_checkpoint(config, fake_fashion, model_name, parameters):
     model_config = load_config(f"configs/a1/{model_name}.yaml")
     config["model"] = model_config["model"]

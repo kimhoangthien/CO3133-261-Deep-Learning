@@ -14,8 +14,10 @@ dataset:
   normalization: true
 model:
   name: cnn
-  # TODO(A1-M2, Khoa): Add model.parameters consumed by explicit constructor/factory arguments for channel configuration, classifier dimensions and dropout only if used.
-  # TODO(A1-M2, Khoa): Document architecture choices and any agreed training deviations; preserve comparable saved histories for training-behavior analysis.
+  parameters:
+    base_channels: 32
+    fc_size: 128
+    dropout_rate: 0.5
 training:
   epochs: 10
   learning_rate: 0.001

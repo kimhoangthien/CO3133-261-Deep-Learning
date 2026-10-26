@@ -7,10 +7,15 @@ class MLP(nn.Module):
 
         self.layers = nn.Sequential(
             nn.Flatten(),
+
             nn.Linear(prod(input_shape), hidden_size),
             nn.ReLU(),
-            nn.Linear(hidden_size, num_classes)
-            )
+
+            nn.Linear(hidden_size, hidden_size // 2),
+            nn.ReLU(),
+
+            nn.Linear(hidden_size // 2, num_classes)
+        )
     
     def forward(self, inputs):
         return self.layers(inputs)
