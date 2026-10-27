@@ -1,4 +1,3 @@
-# NOTE(A1): Preparation config; rnn remains unregistered until implementation and integration.
 assignment: a1
 task: classification
 experiment_name: rnn
@@ -14,8 +13,13 @@ dataset:
   normalization: true
 model:
   name: rnn
-  # TODO(A1-M2, Kim): Add model.parameters consumed by explicit constructor/factory arguments: LSTM OR GRU, input size, hidden size, layers and optional dropout.
-  # TODO(A1-M2, Kim): Document chosen recurrent values and row-sequence semantics; retain the common protocol and record the final reproducibility environment/commands.
+  # Each of the 28 image rows is one timestep; its 28 pixels are the input features.
+  parameters:
+    recurrent_type: lstm
+    input_size: 28
+    hidden_size: 128
+    num_layers: 1
+    dropout: 0.0
 training:
   epochs: 10
   learning_rate: 0.001
