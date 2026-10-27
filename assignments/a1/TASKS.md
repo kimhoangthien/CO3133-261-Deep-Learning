@@ -1,4 +1,4 @@
-# Assignment 1 task allocation
+ # Assignment 1 task allocation
 
 CO3133 – Deep Learning and Its Applications · Semester 261 · Group G-08
 

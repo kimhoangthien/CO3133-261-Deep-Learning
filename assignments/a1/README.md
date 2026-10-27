@@ -1,8 +1,8 @@
 # Assignment 1: image classification
 
 Main dataset: Fashion-MNIST. MNIST is debugging-only; CIFAR-10 is optional.
-Linear, MLP and the shared training/evaluation pipeline are implemented. CNN,
-LSTM/GRU and Transformer remain TODO. Keep seed, split, normalization and evaluation
+Linear, MLP, a row-sequence LSTM/GRU, and the shared training/evaluation pipeline are implemented.
+CNN and Transformer remain TODO. Keep seed, split, normalization and evaluation
 protocol identical for the main comparison.
 
 **30 September 2026: M1 Draft completed and merged; M2 Final in progress.**
@@ -16,7 +16,8 @@ As of 23 September 2026, the local integration review records executed EDA,
 84.06% (Linear) and 87.59% (MLP). An earlier MLP NaN failure remains unexplained;
 finite-value guards and successful reruns do not resolve its cause. Submission
 review was open in that historical record; remaining provenance questions are
-tracked in M2 reproducibility/QA. See [verification](../../VERIFICATION.md) and the
+tracked in M2 reproducibility/QA. The RNN is implemented and registered on
+`feature/a1-rnn`. See [verification](../../VERIFICATION.md) and the
 [A1 page](../../docs/assignments/a1/index.html).
 
 ## Remaining work

@@ -18,16 +18,16 @@ Repository: https://github.com/kimhoangthien/CO3133-261-Deep-Learning
 - `assignments`: notes, notebooks and analysis; reusable code stays in `src`.
 - `docs`: plain HTML/CSS GitHub Pages website; no build step or JavaScript needed.
 
-**Implemented:** Linear and MLP raw-logit classifiers, Adam/CrossEntropy training, validation,
+**Implemented:** Linear, MLP and row-sequence LSTM/GRU raw-logit classifiers, Adam/CrossEntropy training, validation,
 best-accuracy checkpoint, official-test evaluation, accuracy, macro-F1 (all ten
 classes, zero for undefined class F1), parameter count, confusion-matrix data,
 training history and timing. Full-data Linear and MLP CPU runs are recorded: test accuracy 84.06% and 87.59%,
 respectively. EDA was executed in a local review copy. The 23 September review
-records 34 passing tests and smoke checks for both models, but an earlier MLP
+records 34 passing tests and smoke checks for both baselines, but an earlier MLP
 NaN failure remains unexplained in that historical record. M1 Draft is now completed
 and merged, as confirmed on 30 September; M2 Final development is in progress.
-CNN/LSTM-or-GRU/Transformer have interface-only skeletons and assigned config TODOs;
-they remain unregistered. Start with the [M2 guide](assignments/a1/START_HERE.md).
+The RNN implementation is registered on its feature branch; CNN and Transformer
+remain interface-only skeletons. Start with the [M2 guide](assignments/a1/START_HERE.md).
 A2/A3 are placeholders, with no speculative implementations.
 
 See [PROJECT_TREE.md](PROJECT_TREE.md) for the complete source tree and
@@ -100,7 +100,7 @@ measurements for the final compute-cost comparison.
 
 ## Remaining Assignment 1 work
 
-Investigate the initial MLP nonfinite run; implement CNN, LSTM/GRU and Transformer;
+Investigate the initial MLP nonfinite run; implement CNN and Transformer;
 incorporate executed EDA findings into `assignments/a1/notebooks/eda.ipynb`;
 extend controlled full-data experiments beyond the two baselines; plot training/validation curves and confusion matrices; collect
 correct/incorrect examples; analyze representation, inductive bias and limitations;
